@@ -1,71 +1,60 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Landing Page Video</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-    }
-    .video-container {
-      width: 100%;
-      max-width: 800px;
-      margin-top: 20px;
-    }
-    video {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    }
-    .ads {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      width: 90%;
-      max-width: 600px;
-    }
-    .ads a {
-      display: block;
-      padding: 12px;
-      background: #ff5722;
-      color: #fff;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .ads a:hover {
-      background: #e64a19;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Player</title>
+
+<style>
+  body {
+    margin: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .video-wrapper {
+    width: 100%;
+    max-width: 900px;
+  }
+
+  video {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  }
+</style>
 </head>
+
 <body>
 
-  <h1>🎬 Tonton Video Ini</h1>
+<div class="video-wrapper">
+  <video id="myVideo" controls>
+    <source src="https://cdn.videy.co/VYOSfCwz1.mp4" type="video/mp4">
+    Browser tidak mendukung video.
+  </video>
+</div>
 
-  <div class="video-container">
-    <video controls autoplay loop muted>
-      <source src="https://cdn.videy.co/VYOSfCwz1.mp4" type="video/mp4">
-      Browser kamu tidak mendukung video.
-    </video>
-  </div>
+<script>
+let adsShown = false;
 
-  <div class="ads">
-    <a href="https://omg10.com/4/10286552" target="_blank" rel="noopener noreferrer">➡️ Iklan 1</a>
-    <a href="https://www.effectivegatecpm.com/pefgs2tn?key=21379ff7165874369a25be941fc6b753" target="_blank" rel="noopener noreferrer">➡️ Iklan 2</a>
-    <a href="https://s.shopee.co.id/8fN19S3ZVP" target="_blank" rel="noopener noreferrer">➡️ Iklan 3</a>
-  </div>
+const video = document.getElementById("myVideo");
+
+video.addEventListener("play", function () {
+
+  // supaya iklan cuma muncul sekali
+  if (adsShown) return;
+  adsShown = true;
+
+  // buka 3 direct link saat klik play
+  window.open("https://omg10.com/4/10286552", "_blank");
+  window.open("https://www.effectivegatecpm.com/pefgs2tn?key=21379ff7165874369a25be941fc6b753", "_blank");
+  window.open("https://s.shopee.co.id/8fN19S3ZVP", "_blank");
+
+});
+</script>
 
 </body>
 </html>
