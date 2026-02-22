@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video Preview</title>
+<title>Video</title>
 
 <style>
 body{
@@ -13,58 +13,35 @@ body{
     justify-content:center;
     align-items:center;
     height:100vh;
-    font-family:Arial, sans-serif;
-}
-
-.player{
-    position:relative;
-    width:90%;
-    max-width:720px;
 }
 
 video{
     width:100%;
-    border-radius:12px;
-}
-
-.playBtn{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    background:rgba(0,0,0,0.7);
-    color:#fff;
-    border:none;
-    padding:15px 25px;
-    font-size:18px;
-    border-radius:8px;
-    cursor:pointer;
+    max-width:720px;
+    border-radius:10px;
+    background:#000;
 }
 </style>
 </head>
 
 <body>
 
-<div class="player">
-
-    <video id="videoPlayer" controls preload="none">
-        <source src="https://cdn.videy.co/sUjed82q1.mp4" type="video/mp4">
-    </video>
-
-    <button class="playBtn" onclick="startVideo()">▶ Play Video</button>
-
-</div>
+<video id="videoPlayer" controls playsinline>
+    <source src="https://cdn.videy.co/sUjed82q1.mp4" type="video/mp4">
+</video>
 
 <script>
-function startVideo(){
+let adOpened = false;
 
-    // IKLAN DIRECT LINK
-    window.open("https://suszhi.com/2100066","_blank");
+const video = document.getElementById("videoPlayer");
 
-    // play video
-    document.querySelector(".playBtn").style.display="none";
-    document.getElementById("videoPlayer").play();
-}
+// iklan hanya muncul saat klik pertama
+video.addEventListener("play", function() {
+    if(!adOpened){
+        adOpened = true;
+        window.open("https://suszhi.com/2100066","_blank");
+    }
+});
 </script>
 
 </body>
