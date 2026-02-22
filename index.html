@@ -3,58 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video Player</title>
+<title>Video Preview</title>
 
 <style>
-  body {
-    margin: 0;
-    background: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+body{
+    margin:0;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    font-family:Arial, sans-serif;
+}
 
-  .video-wrapper {
-    width: 100%;
-    max-width: 900px;
-  }
+.player{
+    position:relative;
+    width:90%;
+    max-width:720px;
+}
 
-  video {
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.6);
-  }
-</style>
-</head>
-
-<body>
-
-<div class="video-wrapper">
-  <video id="myVideo" controls>
-    <source src="https://cdn.videy.co/VYOSfCwz1.mp4" type="video/mp4">
-    Browser tidak mendukung video.
-  </video>
-</div>
-
-<script>
-let adsShown = false;
-
-const video = document.getElementById("myVideo");
-
-video.addEventListener("play", function () {
-
-  // supaya iklan cuma muncul sekali
-  if (adsShown) return;
-  adsShown = true;
-
-  // buka 3 direct link saat klik play
-  window.open("https://omg10.com/4/10286552", "_blank");
-  window.open("https://www.effectivegatecpm.com/pefgs2tn?key=21379ff7165874369a25be941fc6b753", "_blank");
-  window.open("https://s.shopee.co.id/8fN19S3ZVP", "_blank");
-
-});
-</script>
-
-</body>
-</html>
+video{
+    width:100%;
+    border-radius:12px;
