@@ -7,44 +7,71 @@
 
 <style>
 body{
-    margin:0;
-    background:#000;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+  margin:0;
+  background:#000;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:Arial;
+}
+
+.player{
+  position:relative;
+  max-width:420px;
+  width:100%;
 }
 
 video{
-    width:100%;
-    max-width:720px;
-    background:#000;
+  width:100%;
+  border-radius:12px;
+}
+
+.playbtn{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:80px;
+  height:80px;
+  background:rgba(255,255,255,0.9);
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:32px;
+  cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<video id="videoPlayer" controls playsinline>
-    <source src="https://cdn.videy.co/sUjed82q1.mp4" type="video/mp4">
+<div class="player">
+
+<video id="video">
+  <source src="https://cdn.videy.co/sUjed82q1.mp4" type="video/mp4">
 </video>
 
+<div class="playbtn" id="playBtn">▶</div>
+
+</div>
+
 <script>
-const video = document.getElementById("videoPlayer");
+let adsShown = false;
 
-// cek apakah iklan sudah pernah dibuka
-let adOpened = sessionStorage.getItem("adOpened");
+document.getElementById("playBtn").addEventListener("click", function(){
 
-video.addEventListener("click", function () {
+  // buka iklan hanya sekali
+  if(!adsShown){
+    window.open("https://souszhi.com/2100066/","_blank");
+    adsShown = true;
+  }
 
-    if(!adOpened){
-        sessionStorage.setItem("adOpened", "yes");
-        adOpened = true;
+  const video = document.getElementById("video");
+  video.play();
 
-        // buka iklan HANYA SEKALI
-        window.open("https://suszhi.com/2100066", "_blank");
-    }
-
+  this.style.display = "none";
 });
 </script>
 
