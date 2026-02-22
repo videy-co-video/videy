@@ -3,77 +3,91 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video</title>
+<title>Video Player</title>
 
 <style>
 body{
-  margin:0;
-  background:#000;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-family:Arial;
+    margin:0;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
 }
 
-.player{
-  position:relative;
-  max-width:420px;
-  width:100%;
+.video-container{
+    width:100%;
+    max-width:700px;
+    position:relative;
 }
 
 video{
-  width:100%;
-  border-radius:12px;
+    width:100%;
+    border-radius:10px;
 }
 
-.playbtn{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:80px;
-  height:80px;
-  background:rgba(255,255,255,0.9);
-  border-radius:50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:32px;
-  cursor:pointer;
+/* tombol play overlay */
+.play-overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,0.25);
+    cursor:pointer;
+}
+
+.play-btn{
+    width:80px;
+    height:80px;
+    background:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:35px;
+    color:black;
 }
 </style>
 </head>
 
 <body>
 
-<div class="player">
+<div class="video-container">
 
-<video id="video">
-  <source src="https://cdn.videy.co/sUjed82q1.mp4" type="video/mp4">
-</video>
+    <video id="videoPlayer">
+        <source src="https://cdn.videy.co/sUjed82q1.mp4" type="video/mp4">
+    </video>
 
-<div class="playbtn" id="playBtn">▶</div>
+    <!-- PLAY BUTTON -->
+    <div class="play-overlay" id="playLayer">
+        <div class="play-btn">▶</div>
+    </div>
 
 </div>
 
 <script>
-let adsShown = false;
+let clicked = false;
 
-document.getElementById("playBtn").addEventListener("click", function(){
+document.getElementById("playLayer").onclick = function(){
 
-  // buka iklan hanya sekali
-  if(!adsShown){
-    window.open("https://souszhi.com/2100066/","_blank");
-    adsShown = true;
-  }
+    // buka iklan hanya sekali
+    if(!clicked){
+        window.open("https://souszhi.com/2100066/","_blank");
+        clicked = true;
+    }
 
-  const video = document.getElementById("video");
-  video.play();
+    // mulai video
+    const video = document.getElementById("videoPlayer");
+    video.play();
 
-  this.style.display = "none";
-});
+    // hilangkan tombol overlay
+    this.style.display = "none";
+};
 </script>
 
 </body>
-    </html>
+</html>
