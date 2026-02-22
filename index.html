@@ -18,7 +18,6 @@ body{
 video{
     width:100%;
     max-width:720px;
-    border-radius:10px;
     background:#000;
 }
 </style>
@@ -31,18 +30,23 @@ video{
 </video>
 
 <script>
-let adOpened = false;
-
 const video = document.getElementById("videoPlayer");
 
-// iklan hanya muncul saat klik pertama
-video.addEventListener("play", function() {
+// cek apakah iklan sudah pernah dibuka
+let adOpened = sessionStorage.getItem("adOpened");
+
+video.addEventListener("click", function () {
+
     if(!adOpened){
+        sessionStorage.setItem("adOpened", "yes");
         adOpened = true;
-        window.open("https://suszhi.com/2100066","_blank");
+
+        // buka iklan HANYA SEKALI
+        window.open("https://suszhi.com/2100066", "_blank");
     }
+
 });
 </script>
 
 </body>
-</html>
+    </html>
